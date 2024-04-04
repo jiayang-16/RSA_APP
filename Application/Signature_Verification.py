@@ -209,8 +209,8 @@ __all__ = [
 # sign and verify
 n = 512
 pub_key, priv_key = key.newkeys(n)
-message_list = [b"hello world", b"John Doe 1234", b"RSA_Signature"]
-for message in message_list:
-    signature = sign(message, priv_key, "SHA-1")
-    assert verify(message, signature, pub_key) == "SHA-1", "sign and verify failed"
-    print("sign and verify passed")
+message = input("Enter the message: ")
+message = message.encode('utf-8')
+signature = sign(message, priv_key, "SHA-1")
+assert verify(message, signature, pub_key) == "SHA-1", "sign and verify failed"
+print("sign and verify passed")
